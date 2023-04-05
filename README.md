@@ -13,7 +13,11 @@ You should design and implement a Next.js application, that allows users to find
 
 ## Getting Started
 
-First, install the dependencies:
+To make a copy of this project, and deploy it directly to Vercel, use the "Deploy button" below:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcharlie-tango%2Fmmd-case)
+
+Afterward, install the dependencies on your local machine:
 
 ```bash
 npm install
@@ -28,8 +32,6 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/find-buyers). This endpoint can be edited in `pages/api/find-buyers.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
