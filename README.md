@@ -15,7 +15,7 @@ You should design and implement a Next.js application, that allows users to find
 
 To make a copy of this project, and deploy it directly to Vercel, use the "Deploy button" below:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcharlie-tango%2Fmmd-case)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcharlie-tango%2Fmmd-case&project-name=edc-case&repository-name=edc-case)
 
 Afterward, install the dependencies on your local machine:
 
