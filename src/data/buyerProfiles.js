@@ -17,11 +17,7 @@ function generateBuyerProfile() {
   endDate.setMonth(endDate.getMonth() + 3);
 
   const result = {
-    id: faker.datatype.uuid(),
-    ref: faker.datatype
-      .number({ min: 5000, max: 100000 })
-      .toString()
-      .padStart(6, "0"),
+    id: faker.datatype.uuid().split("-")[0],
     /** Maximum price in kr */
     priceMax: faker.datatype.number({ min: 5, max: 200 }) * 100000,
     /** Minimum size in m2 */
@@ -70,7 +66,7 @@ function generateBuyerProfile() {
  * @param zipCode {number}
  * @param min? {number}
  * @param max? {number}
- * @returns {{ref: string, priceMax: number, estateType: string, takeoverDate: string, children: number, adults: number, description: string, minSize: number, id: string}[]}
+ * @returns {{ priceMax: number, estateType: string, takeoverDate: string, children: number, adults: number, description: string, minSize: number, id: string}[]}
  */
 export function generateBuyerProfiles({
   zipCode = 2100,
