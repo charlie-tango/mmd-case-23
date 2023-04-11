@@ -34,7 +34,7 @@ buyers in their area before beginning the process or engaging with an agent. If
 they find a potential buyer, EDC can start the process of contacting them and
 helping them sell their property.
 
-### Function Requirements
+### Functional Requirements
 
 - Design and implement a Next.js application, that allows users to find
   potential buyers for their real estate property, and submit their details to
