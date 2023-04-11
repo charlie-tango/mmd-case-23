@@ -34,38 +34,51 @@ buyers in their area before beginning the process or engaging with an agent. If
 they find a potential buyer, EDC can start the process of contacting them and
 helping them sell their property.
 
-### Functional requirements
+### Function Requirements
 
 - Design and implement a Next.js application, that allows users to find
   potential buyers for their real estate property, and submit their details to
   EDC.
-- It must contain at least 2 Next.js pages
 - An [API route](https://nextjs.org/docs/api-routes/introduction), or a
   [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
   function, that returns a list of potential buyers, based on the zip code, and
   other details, entered by the user.
   - See `./src/data/buyerProfiles.js` for mock data.
-- An API route that posts the user's details to a
+- An [API route](https://nextjs.org/docs/api-routes/introduction) that posts the
+  user's details to a
   [Supabase database](https://supabase.com/docs/guides/getting-started/quickstarts/nextjs)
+- A dashboard page that displays the latest requests, from the
+  [Supabase database](https://supabase.com/docs/guides/getting-started/quickstarts/nextjs).
 
-### Suggested flow
+### Pages
 
-- A **landing page**, that prompts the user to enter a few details about the
+#### Find Buyers
+
+You can combine these screens into a single page, or split them up into multiple
+depending on your design. The important thing is that the user can complete the
+4 steps in an intuitive way.
+
+- A **landing screen**, that prompts the user to enter a few details about the
   property they want to sell. Submitting the form, should send the user to the
   next page.
-- A **results page**, that displays a list of potential buyers, based on the zip
-  code, and other details, entered by the user.
-- A **contact page**, that allows the user to fill in their contact details, so
-  EDC can contact the potential buyers on their behalf.
-- A **confirmation page**, that lets the user know that EDC will contact them
+- A **results screen**, that displays a list of potential buyers, based on the
+  zip code, and other details, entered by the user.
+- A **contact screen**, that allows the user to fill in their contact details,
+  so EDC can contact the potential buyers on their behalf.
+- A **confirmation screen**, that lets the user know that EDC will contact them
   shortly.
 
-If you feel like it makes sense for your design, you can combine some of the
-pages - But you should still have at least two pages.
+#### Employee Dashboard
+
+The dashboard is intended to be used by EDC employees, to view the latest
+requests. For this task, it doesn't need to be secured with login. It should
+fetch the latest requests from the Supabase database, and display them in a
+list. It should present the relevant details from each request, to allow the EDC
+employee to take action.
 
 ## Data
 
-You are going to be working with two different sets of data.
+You are going to be working with the following sets of data.
 
 ### Lookup details
 
@@ -124,7 +137,7 @@ fields, if they are relevant.
 | `children`     | `number` | The number of children                                                             |
 | `description`  | `string` | A description of the buyer's situation                                             |
 | `minSize`      | `number` | The minimum size of the property, in square meters                                 |
-| `priceMax`     | `number` | The maximum price the buyer is willing to pay, in Danish Kroner                    |
+| `maxPrice`     | `number` | The maximum price the buyer is willing to pay, in Danish Kroner                    |
 
 **Example**
 
@@ -137,7 +150,7 @@ fields, if they are relevant.
   "children": 2,
   "description": "We are a family of 4, looking for a house in the suburbs.",
   "minSize": 100,
-  "priceMax": 2000000
+  "maxPrice": 2000000
 }
 ```
 

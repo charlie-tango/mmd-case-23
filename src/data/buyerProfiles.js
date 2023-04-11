@@ -7,10 +7,15 @@ const priceFormatter = new Intl.NumberFormat("da-DK", {
   maximumFractionDigits: 0,
 });
 
+function toNearestHundredThousand(number) {
+  return Math.floor(number / 100000) * 100000;
+}
+
 /**
  * Generate a fake profile for a potential buyer.
+ * Feel free to adjust this date to fit your needs.
  */
-function generateBuyerProfile() {
+export function generateBuyerProfile({ price = 5000000, size = 100 } = {}) {
   const today = new Date();
   const endDate = new Date();
   // Set the end date to 3 months from now.
@@ -19,12 +24,21 @@ function generateBuyerProfile() {
   const result = {
     id: faker.datatype.uuid().split("-")[0],
     /** Maximum price in kr */
-    priceMax: faker.datatype.number({ min: 5, max: 200 }) * 100000,
+    maxPrice: toNearestHundredThousand(
+      faker.datatype.number({
+        min: price * 0.5,
+        max: price * 1.5,
+      })
+    ),
     /** Minimum size in m2 */
-    minSize: faker.datatype.number({ min: 60, max: 300 }),
+    minSize: faker.datatype.number({
+      min: Math.floor(size * 0.5),
+      max: Math.floor(size * 1.5),
+    }),
     adults: faker.datatype.number({ min: 1, max: 2 }),
     children: faker.datatype.number({ min: 0, max: 5 }),
-    description: faker.lorem.paragraph(),
+    description: "",
+    /** The type of estate the buyer is looking for. This is just the ID, so we can find the value in `estateTypes.js` */
     estateType:
       estateTypes[
         faker.datatype.number({ min: 0, max: estateTypes.length - 1 })
@@ -55,7 +69,7 @@ function generateBuyerProfile() {
   } with a minimum size of ${
     result.minSize
   } m2 and a maximum price of ${priceFormatter.format(
-    result.priceMax
+    result.maxPrice
   )} ${faker.lorem.sentence()}`;
 
   return result;
@@ -63,25 +77,30 @@ function generateBuyerProfile() {
 
 /**
  * Generate a fake list of buyer profiles for a given zip code
- * @param zipCode {number}
- * @param min? {number}
- * @param max? {number}
- * @returns {{ priceMax: number, estateType: string, takeoverDate: string, children: number, adults: number, description: string, minSize: number, id: string}[]}
+ * @param zipCode {number} Filter profiles based on the zipCode
+ * @param price {number} Price in kr
+ * @param size {number} Size in square meters
+ * @param minResults? {number} Minimum number of profiles to generate
+ * @param maxResults? {number} Maximum number of profiles to generate
+ * @returns {{ maxPrice: number, estateType: string, takeoverDate: string, children: number, adults: number, description: string, minSize: number, id: string}[]}
  */
 export function generateBuyerProfiles({
-  zipCode = 2100,
-  min = 0,
-  max = undefined,
+  zipCode,
+  price = undefined,
+  size = undefined,
+  minResults = 0,
+  maxResults = 20,
 } = {}) {
+  if (!zipCode) return [];
   faker.seed(zipCode);
 
   return Array.from(
     {
       length: faker.datatype.number({
-        min: min !== undefined ? min : 0,
-        max: max !== undefined ? max : 100,
+        min: minResults,
+        max: maxResults,
       }),
     },
-    generateBuyerProfile
+    () => generateBuyerProfile({ price, size })
   );
 }

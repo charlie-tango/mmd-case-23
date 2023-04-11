@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import styles from "./Buyers.module.css";
 
 export default function Buyers() {
   const { query } = useRouter();
@@ -9,9 +10,9 @@ export default function Buyers() {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
-        <h1 className="font-serif">Potential buyers</h1>
+        <h1 className={styles.headline}>Potential buyers</h1>
         <p>
-          On this page you the <code>`query`</code> params like{" "}
+          On this page you get the <code>`query`</code> params like{" "}
           <code>`zipCode`</code>, and can use them to fetch a list of buyers
           from the API.
         </p>
@@ -38,10 +39,12 @@ export default function Buyers() {
             </a>
           </li>
         </ul>
-        <h2>Query params</h2>
-        <pre>
-          <code>{JSON.stringify(query, null, 2)}</code>
-        </pre>
+        <div className={styles.content}>
+          <h2>Query params:</h2>
+          <pre>
+            <code>{JSON.stringify(query, null, 2)}</code>
+          </pre>
+        </div>
       </div>
     </>
   );

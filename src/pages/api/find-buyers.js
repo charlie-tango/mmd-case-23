@@ -10,9 +10,9 @@ export default function handler(req, res) {
   // You can open the browser, and go to http://localhost:3000/api/find-buyers to see the response.
 
   // Find the zip code from the query parameters, and use it to generate a list of (fake) buyer profiles.
-  const zipCode = req.query.zipCode;
+  const zipCode = parseInt(req.query.zipCode || "2100");
   const profilesForZipCode = generateBuyerProfiles({
-    zipCode: parseInt(zipCode || "0"),
+    zipCode,
   });
 
   // Set the cache headers, so that the response can be cached

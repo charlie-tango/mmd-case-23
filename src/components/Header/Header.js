@@ -13,6 +13,7 @@ export function Header() {
           width={64}
           height={64}
           alt="EDC"
+          priority
         />
       </Link>
     </header>
