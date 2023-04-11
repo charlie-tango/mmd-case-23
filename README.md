@@ -58,15 +58,33 @@ You can combine these screens into a single page, or split them up into multiple
 depending on your design. The important thing is that the user can complete the
 4 steps in an intuitive way.
 
-- A **landing screen**, that prompts the user to enter a few details about the
-  property they want to sell. Submitting the form, should send the user to the
-  next page.
-- A **results screen**, that displays a list of potential buyers, based on the
-  zip code, and other details, entered by the user.
-- A **contact screen**, that allows the user to fill in their contact details,
-  so EDC can contact the potential buyers on their behalf.
-- A **confirmation screen**, that lets the user know that EDC will contact them
-  shortly.
+##### Landing screen
+
+Prompt the user to enter a few details about the property they want to sell.
+Submitting the form, should send the user to the next page.
+
+![./docs/step1.png](./docs/step1.png "Step 1")
+
+##### Results screen
+
+Display a list of potential buyers, based on the zip code, and other details,
+entered by the user.
+
+![./docs/step2.png](./docs/step2.png "Step 2")
+
+##### Contact screen
+
+Allow the user to fill in their contact details, so EDC can contact the
+potential buyers on their behalf.
+
+![./docs/step3.png](./docs/step3.png "Step 3")
+
+##### Confirmation screen
+
+Let the user know that their request was received successfully, and EDC will
+contact them shortly.
+
+![./docs/step4.png](./docs/step4.png "Step 4")
 
 #### Employee Dashboard
 
@@ -75,6 +93,16 @@ requests. For this task, it doesn't need to be secured with login. It should
 fetch the latest requests from the Supabase database, and display them in a
 list. It should present the relevant details from each request, to allow the EDC
 employee to take action.
+
+- It should be located at `/dashboard`.
+- Email and phone should be displayed as links, so the employee can click to
+  call or email the user.
+- The list should be sorted by the date the request was created, with the most
+  recent requests at the top.
+- You should be able to delete a request from the list, by clicking a delete
+  button.
+
+![./docs/dashboard.png](./docs/dashboard.png "Dashboard")
 
 ## Data
 
@@ -130,7 +158,6 @@ fields, if they are relevant.
 | Field          | Type     | Description                                                                        |
 | -------------- | -------- | ---------------------------------------------------------------------------------- |
 | `id`           | `string` | A unique identifier for the buyer profile                                          |
-| `ref`          | `string` | A reference number to the profile - Present this in the UI                         |
 | `estateType`   | `string` | The id of the estate type. Compare this with values in `./src/data/estateTypes.js` |
 | `takeoverDate` | `string` | The date the buyer wants to take over the property. Format: `YYYY-MM-DD`           |
 | `adults`       | `number` | The number of adults                                                               |
