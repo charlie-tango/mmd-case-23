@@ -5,10 +5,7 @@ easy as possible for their clients.
 
 ## Getting Started
 
-To make a copy of this project, and deploy it directly to Vercel, use the
-"Deploy button" below:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcharlie-tango%2Fmmd-case&project-name=charlie-tango-case&repository-name=charlie-tango-case)
+Fork and clone this repository
 
 Afterward, install the dependencies on your local machine:
 
@@ -28,24 +25,25 @@ result.
 ## The task
 
 The goal of this case is to help people who are thinking of selling their
-property to get an idea of the market before they work with a real estate agent.
-This will help them understand the value of their property and the potential
-buyers in their area before beginning the process or engaging with an agent. If
-they find a potential buyer, EDC can start the process of contacting them and
-helping them sell their property.
+property (the seller) to get an idea of the market before they work with a real
+estate agent. This will help them understand the value of their property and the
+potential buyers in their area before beginning the process or engaging with an
+agent. If they find a potential buyer, EDC can start the process of contacting
+them and helping them sell their property.
 
 ### Functional Requirements
 
 - Design and implement a Next.js application, that allows users to find
   potential buyers for their real estate property, and submit their details to
   EDC.
-- An [API route](https://nextjs.org/docs/api-routes/introduction), or a
+- An [API route](https://nextjs.org/docs/api-routes/introduction), function,
+  service, page, or a
   [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
   function, that returns a list of potential buyers, based on the zip code, and
   other details, entered by the user.
   - See `./src/data/buyerProfiles.js` for mock data.
-- An [API route](https://nextjs.org/docs/api-routes/introduction) that posts the
-  user's details to a
+- An [API route](https://nextjs.org/docs/api-routes/introduction) or a request
+  that posts the user's details to a
   [Supabase database](https://supabase.com/docs/guides/getting-started/quickstarts/nextjs)
 - A dashboard page that displays the latest requests, from the
   [Supabase database](https://supabase.com/docs/guides/getting-started/quickstarts/nextjs).
@@ -114,6 +112,10 @@ To start with, the user should enter a few details about the property they want
 to sell, so we can find relevant buyers. Ideally we want the full address, but
 for this task you can decide to just get the `zip` code.
 
+- See `./src/pages/api/find-buyers.js` for a simple example.
+
+Relevant entries to filter potential buyers
+
 | Field        | Type     | Description                                                                        |
 | ------------ | -------- | ---------------------------------------------------------------------------------- |
 | `price`      | `number` | The price the person is willing to pay for the property                            |
@@ -132,7 +134,7 @@ for this task you can decide to just get the `zip` code.
 }
 ```
 
-#### Zip code lookup
+#### Zip code lookup (optional)
 
 Using the open Dawa API, you can validate a zipcode, and get back the city name.
 Use this to ensure the user entered a valid zipcode, before submitting the form.
@@ -140,7 +142,7 @@ Use this to ensure the user entered a valid zipcode, before submitting the form.
 - https://dawadocs.dataforsyningen.dk/dok/api/postnummer#opslag
 - **Example:** https://api.dataforsyningen.dk/postnumre/2200
 
-#### Address lookup
+#### Address lookup (optional)
 
 If you want to go the extra mile, you can use the Dawa API to lookup the full
 address, and implement an autocomplete search. This is not required or expected,
@@ -152,8 +154,8 @@ this functionality. I'd recommend using
 
 ### Buyer profile
 
-A buyer profile should contain the following information. You can add more
-fields, if they are relevant.
+A buyer profile contains the following information. You can add more fields, if
+they are relevant.
 
 | Field          | Type     | Description                                                                        |
 | -------------- | -------- | ---------------------------------------------------------------------------------- |
@@ -183,8 +185,8 @@ fields, if they are relevant.
 
 ### Buyer contact details
 
-The contact details the is submitted at the end, should combine the initial
-lookup data with the user's contact details.
+The contact details that is submitted at the end, should combine the initial
+lookup data with the user's contact details and the chosen buyers.
 
 | Field     | Type      | Description                                                                    |
 | --------- | --------- | ------------------------------------------------------------------------------ |
