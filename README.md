@@ -5,7 +5,10 @@ easy as possible for their clients.
 
 ## Getting Started
 
-Fork and clone this repository
+To get started, you can make a copy of this project, and deploy it directly to 
+Vercel, with the "Deploy button" below:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcharlie-tango%2Fmmd-case&project-name=charlie-tango-case&repository-name=charlie-tango-case)
 
 Afterward, install the dependencies on your local machine:
 
