@@ -1,0 +1,21 @@
+.headline {
+  font-size: 3rem;
+  font-family: var(--font-serif);
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.content {
+  padding: 1rem;
+  background-color: var(--dusty-aqua-light);
+  border: 1px solid var(--dusty-aqua);
+  margin-bottom: 1rem;
+}
+.content :first-child {
+  margin-top: 0;
+}
+.content :last-child {
+  margin-bottom: 0;
+}

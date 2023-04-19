@@ -1,0 +1,50 @@
+@import "fonts.css";
+
+:root {
+  --dark-blue: #0d2e4d;
+  --blue: #164573; /* Primary color; */
+  --hover: #2985cc;
+  --dusty-blue: #5e7c9a;
+  --dusty-blue-light: #93b0cd;
+  --dusty-blue-lighter: #bbc8d7;
+  --aqua: #4dc4d4; /* Secondary color; */
+  --dusty-aqua: #d2dfe0;
+  --dusty-aqua-light: #f3f7f7;
+  --grey: #e5e5e5;
+  --dark-grey: #a2a2a2;
+  --status-light-red: #e18c8c;
+  --status-red: #f24040; /* Error color; */
+  --yellow: #fec315; /* Accent color; */
+  --white: #fff;
+  --black: #000;
+
+  /* Fonts */
+  --font-sans: "Lato", sans-serif;
+  --font-serif: "Manus", serif;
+}
+
+*,
+:before,
+:after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}
+
+body,
+html {
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--white);
+  color: var(--blue);
+}
+
+.wrapper {
+  max-width: 800px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
